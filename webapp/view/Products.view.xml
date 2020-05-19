@@ -1,0 +1,64 @@
+<mvc:View controllerName="logaligroup.ProductsList.controller.Products" 
+          xmlns:mvc="sap.ui.core.mvc" 
+          displayBlock="true" 
+          xmlns="sap.m">
+	<Shell id="shell">
+		<App id="app">
+			<pages>
+				<Page id="page" title="{i18n>title}">
+					<content>
+						<Panel>
+							<headerToolbar>
+								<Toolbar>
+									<Title text="{i18n>productListTitle}"/>
+									<ToolbarSpacer/>
+									<SearchField width="50%"
+									             search=".onFilterProducts"
+									             placeholder="{i18n>searchProducts}"/>
+								</Toolbar>
+							</headerToolbar>
+							
+							<Table id="productList"
+							       class="sapUiResponsiveMargin"
+							       width="auto"
+							       items="{ path: 'northwind>/Products' }">
+						    <columns>
+						    	<Column minScreenWidth="Tablet" demandPopin="false">
+						    		<Text text="{i18n>columnProductID}"/>
+						    	</Column>
+						    	<Column>
+						    		<Text text="{i18n>columnProductName}"/>
+						    	</Column>
+						    	<Column demandPopin="true">
+						    		<Text text="{i18n>columnSupplierID}"/>
+						    	</Column>
+						    	<Column>
+						    		<Text text="{i18n>columnCategoryID}"/>
+						    	</Column>
+						    	<Column>
+						    		<Text text="{i18n>columnQuantityPerUnit}"/>
+						    	</Column>
+						    	<Column>
+						    		<Text text="{i18n>columnUnitPrice}"/>
+						    	</Column>
+						    </columns>
+						    <items>
+						    	<ColumnListItem>
+						    		<cells>
+						    			<ObjectNumber number="{northwind>ProductID}"/>
+						    			<Text text="{northwind>ProductName}"/>
+						    			<ObjectNumber number="{northwind>SupplierID}"/>
+						    			<ObjectNumber number="{northwind>CategoryID}"/>
+						    			<Text text="{northwind>QuantityPerUnit}"/>
+						    			<ObjectNumber number="{northwind>UnitPrice}"/>
+						    		</cells>
+						    	</ColumnListItem>
+						    </items>
+							</Table>
+						</Panel>
+					</content>
+				</Page>
+			</pages>
+		</App>
+	</Shell>
+</mvc:View>
